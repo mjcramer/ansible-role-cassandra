@@ -1,0 +1,6 @@
+# roles/cassandra/meta/main.yml
+---
+dependencies:
+  - role: system
+  - role: java
+  - role: python

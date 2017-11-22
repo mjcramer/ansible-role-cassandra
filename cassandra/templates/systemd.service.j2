@@ -1,0 +1,39 @@
+###############################################################################
+# Cassandra systemd service configuration
+#
+# {{ ansible_managed }}
+#
+###############################################################################
+
+[Unit]
+Description=Apache Cassandra Node
+Documentation=http://cassandra.apache.org/
+Requires=network.target
+After=network.target
+ConditionPathExists={{ cassandra.conf_dir }}
+ConditionPathExists={{ cassandra.lib_dir }}
+ConditionPathExists={{ cassandra.log_dir }}
+
+[Service]
+Type=forking
+User={{ cassandra_user }}
+Group={{ cassandra_group }}
+SyslogIdentifier=cassandra
+LimitNOFILE={{ cassandra_nofile }}
+{% if java_home is defined %}
+Environment=JAVA_HOME={{ java_home }}
+{% endif %}
+Environment=CASSANDRA_CONF={{ cassandra.conf_dir }}
+Environment=CASSANDRA_INCLUDE={{ cassandra.conf_dir }}/cassandra.in.sh
+WorkingDirectory={{ cassandra.home_dir }}
+RuntimeDirectory=cassandra
+RuntimeDirectoryMode=0755
+ExecStart={{ cassandra.home_dir }}/bin/cassandra -p {{ cassandra.run_dir }}/node.pid -Dcassandra.logdir={{ cassandra.log_dir }}
+ExecStop="/bin/kill `cat {{ cassandra.run_dir }}/node.pid`"
+PIDFile={{ cassandra.run_dir }}/node.pid
+Restart=on-failure
+TimeoutStartSec=60s
+TimeoutStopSec=30s
+
+[Install]
+WantedBy=multi-user.target

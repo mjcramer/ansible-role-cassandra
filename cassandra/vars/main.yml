@@ -1,0 +1,11 @@
+# roles/cassandra/vars/main.yml
+---
+cassandra:
+  local_archive: "{{ download_dir }}/{{ cassandra_archive }}"
+  remote_archive: "{{ lookup('env','CASSANDRA_DOWNLOAD_PATH') | default(cassandra_download_path, true) }}/{{ cassandra_archive }}"
+  home_dir: "{{ base_home_dir }}/cassandra"
+  conf_dir: "{{ base_conf_dir }}/cassandra"
+  log_dir: "{{ base_log_dir }}/cassandra"
+  lib_dir: "{{ base_lib_dir }}/cassandra"
+  run_dir: "{{ base_run_dir }}/cassandra"
+

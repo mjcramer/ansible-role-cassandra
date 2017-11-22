@@ -1,0 +1,24 @@
+# roles/cassandra/defaults/main.yml
+---
+# Server deployment parameters - these control how cassandra is deployed
+cassandra_version: "3.10"
+cassandra_name: "apache-cassandra-{{ cassandra_version }}"
+cassandra_archive: "{{ cassandra_name }}-bin.tar.gz"
+cassandra_download_path: "{{ apache_mirror }}/cassandra/{{ cassandra_version }}"
+cassandra_download_checksum: "sha1:1148ec0de5e596520249769e57a91ddbebffa912"
+cassandra_user: cassandra
+cassandra_group: storage
+cassandra_nofile: 1048576
+cassandra_nproc: 65535
+
+# Server environment configuration - this controls how cassandra server is run
+cassandra_jvm_heap_init: 256m
+cassandra_jvm_heap_max: 512m
+
+# Server configuration parameters - this controls the cassandra server configuraiton
+cassandra_config_data_dirs:
+  - "{{ base_lib_dir }}/cassandra/data"
+cassandra_config_native_transport_port: 9042
+cassandra_config_storage_port: 7000
+cassandra_config_rpc_port: 9160
+cassandra_config_endpoint_snitch: SimpleSnitch

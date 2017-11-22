@@ -1,0 +1,8 @@
+
+# Add a suffix to a datacenter name. Used by the Ec2Snitch and Ec2MultiRegionSnitch
+# to append a string to the EC2 region name.
+{% if cassandra_dc_suffix is defined %}
+# dc_suffix={{ cassandra_dc_suffix }}
+{% endif %}
+dc=us-east
+rack=1

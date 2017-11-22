@@ -1,0 +1,9 @@
+export CQLSH_HOST=
+{%- if hostvars[inventory_hostname]['cluster_interface'] is defined %}
+    {%- set key = 'ansible_' + hostvars[inventory_hostname]['cluster_interface'] -%}
+    {{ hostvars[inventory_hostname][key]['ipv4']['address'] }}
+{%- else -%}
+    {{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+{%- endif %}
+
+{{ cassandra.home_dir }}/bin/cqlsh $@

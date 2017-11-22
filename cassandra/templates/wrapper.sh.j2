@@ -1,0 +1,9 @@
+#!/bin/bash
+
+{% if java_home is defined %}
+export JAVA_HOME={{ java_home }}
+{% endif %}
+export CASSANDRA_CONF={{ cassandra.conf_dir }}
+export CASSANDRA_INCLUDE={{ cassandra.conf_dir }}/cassandra.in.sh
+
+su {{ cassandra_user }} -- {{ cassandra.home_dir }}/bin/cassandra -f -Dcassandra.logdir={{ cassandra.log_dir }} $@
