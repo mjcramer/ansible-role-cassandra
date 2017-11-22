@@ -1,7 +1,7 @@
-Role Name
+Cassandra Ansible Role
 =========
 
-A brief description of the role goes here.
+An ansible role for installing Apache Cassandra
 
 Requirements
 ------------
@@ -30,7 +30,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+Unlicensed
 
 Author Information
 ------------------
