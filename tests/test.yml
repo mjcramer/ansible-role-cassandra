@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: cassandra_hosts
+  become: yes
   roles:
-    - role: mjcramer.cassandra
-      become: yes
+    - role: ../../ansible-role-cassandra
+      cassandra_hostgroup: cassandra_hosts

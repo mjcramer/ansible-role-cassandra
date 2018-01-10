@@ -1,15 +1,15 @@
-# cassandra/meta/main.yml
+# roles/cassandra/meta/main.yml
 ---
 dependencies:
-  - role: mjcramer.system
-  - role: mjcramer.java
-  #- role: mjcramer.python
+  - src: mjcramer.system
+  - src: mjcramer.java
+  #- src: mjcramer.python
 
 galaxy_info:
   author: Michael Cramer
   description: Ansible role for installing Apache Cassandra
   license: Unlicensed
-  min_ansible_version: 2.0
+  min_ansible_version: 2.4
   platforms:
   - name: Ubuntu
     versions:

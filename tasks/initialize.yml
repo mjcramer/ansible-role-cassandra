@@ -17,10 +17,10 @@
     enabled: yes
     state: started
 
-- name: initialize | packages
-  pip:
-    name: python-consul
-    state: present
+#- name: initialize | packages
+#  pip:
+#    name: python-consul
+#    state: present
 
 #- name: initialize | service definition
 #  consul:

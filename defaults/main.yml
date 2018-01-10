@@ -1,11 +1,11 @@
 # roles/cassandra/defaults/main.yml
 ---
 # Server deployment parameters - these control how cassandra is deployed
-cassandra_version: "3.10"
+cassandra_version: "3.11.1"
 cassandra_name: "apache-cassandra-{{ cassandra_version }}"
 cassandra_archive: "{{ cassandra_name }}-bin.tar.gz"
 cassandra_download_path: "{{ apache_mirror }}/cassandra/{{ cassandra_version }}"
-cassandra_download_checksum: "sha1:1148ec0de5e596520249769e57a91ddbebffa912"
+cassandra_download_checksum: "sha1:454f4fd60aeed97b0ed80afebe5c08620d8ddf04"
 cassandra_user: cassandra
 cassandra_group: storage
 cassandra_nofile: 1048576
