@@ -1,5 +1,6 @@
 # Ignore these files
-.idea
 *.iml
-**/.vagrant
-*.retry
+.ansible-vault-password
+.ansible-facts
+.cache
+**/*.retry
