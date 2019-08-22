@@ -30,6 +30,9 @@
 - name: apply role to instance
   hosts: cassandra_hosts
 
+  vars_files:
+    - common.yml
+
   roles:
     - role: ../../ansible-role-cassandra
       become: yes

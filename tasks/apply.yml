@@ -25,6 +25,7 @@
     - "{{ cassandra.conf_dir }}"
     - "{{ cassandra.log_dir }}"
     - "{{ cassandra.lib_dir }}"
+    - "{{ cassandra.run_dir }}"
 
 - name: apply | download archive
   get_url:
@@ -33,7 +34,7 @@
     checksum: "{{ cassandra_download_checksum }}"
     mode: 0644 
     force: no
-  when: cassandra.remote_archive | match("^http.*$")
+  when: cassandra.remote_archive is match("^http.*$")
   tags:
     - download
 
@@ -41,7 +42,7 @@
   copy:
     src: "{{ cassandra.remote_archive }}"
     dest: "{{ cassandra.local_archive }}"
-  when: cassandra.remote_archive | match("^(?!http).*$")
+  when: cassandra.remote_archive is match("^(?!http).*$")
 
 - name: apply | unpack archive
   unarchive: 

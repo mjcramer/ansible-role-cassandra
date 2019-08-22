@@ -18,7 +18,8 @@ endif
 .PHONY: setup teardown ping
 
 setup:
-	ansible-galaxy install mjcramer.system mjcramer.java
+	echo $(ANSIBLE_CONFIG)
+	ANSIBLE_CONFIG=${ANSIBLE_CONFIG} ansible-galaxy install mjcramer.system mjcramer.java
 	ANSIBLE_CONFIG=${ANSIBLE_CONFIG} ansible-playbook \
 		$(ANSIBLE_PLAYBOOK_OPTS) \
 		--inventory localhost, \
@@ -29,6 +30,7 @@ teardown:
 		$(ANSIBLE_PLAYBOOK_OPTS) \
 		--inventory localhost, \
 		tests/teardown.yml
+	rm -rf mjcramer.*
 
 ping:
 	ANSIBLE_CONFIG=${ANSIBLE_CONFIG} ansible \
