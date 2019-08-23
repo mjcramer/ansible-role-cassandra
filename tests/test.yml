@@ -1,6 +1,0 @@
----
-- hosts: cassandra_hosts
-  become: yes
-  roles:
-    - role: ../../ansible-role-cassandra
-      cassandra_hostgroup: cassandra_hosts

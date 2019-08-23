@@ -39,4 +39,28 @@
 
   tasks:
     - debug:
-        var: java_home
+        var: cassandra_version
+
+    - copy:
+        src: "{{ item }}"
+        dest: "{{ download_dir }}"
+      loop: "{{ lookup('fileglob', 'cql/*', wantlist=True) }}"
+
+    #
+    # TODO: The following blocks are not working because cqlsh does not yet support python3. You will see a 
+    #       'no appropriate python interpreter found' error
+    #
+    # - raw: "{{ cassandra.home_dir }}/bin/cqlsh -f {{ download_dir }}/create.cql {{ ansible_default_ipv4.address }}"
+    #   run_once: yes
+    #   register: create
+    #   changed_when: False
+
+    # - debug:
+    #     var: create
+
+    # - raw: "{{ cassandra.home_dir }}/bin/cqlsh -f {{ download_dir }}/verify.cql {{ ansible_default_ipv4.address }} | grep -q Grendal"
+    #   register: verify
+    #   changed_when: False
+
+    # - debug:
+    #     var: verify

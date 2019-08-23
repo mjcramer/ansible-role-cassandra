@@ -2,7 +2,7 @@ Cassandra Ansible Role
 ======================
 [![Build Status](https://travis-ci.org/mjcramer/ansible-role-cassandra.svg?branch=master)](https://travis-ci.org/mjcramer/ansible-role-cassandra) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-mjcramer.cassandra-blue.svg)](https://galaxy.ansible.com/mjcramer/cassandra/) 
 
-An ansible role for installing Apache Cassandra
+An ansible role for installing Cassandra
 
 Requirements
 ------------
@@ -16,16 +16,16 @@ Currently, the oracle and openjdk JVMs are supported.
 
 | Name | Value |
 | --- | --- |
-| jvm_provider | - openjdk | 
-| | - oracle |
-| java_version | - 8 |
-| | - 11 |
+| cassandra_version | 3.11 |
 
 
 Dependencies
 ------------
 
 A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+
+- mjcramer.system
+- mjcramer.java
 
 Tags
 ----
@@ -51,7 +51,8 @@ License
 
 Unlicensed
 
+
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+[Michael Cramer](http://michael.cramer.name), *michael@cramer.name* [_mjcramer_](http://github.com/mjcramer)

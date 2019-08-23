@@ -362,11 +362,8 @@ commitlog_segment_size_in_mb: 32
 
 # any class that implements the SeedProvider interface and has a
 # constructor that takes a Map<String, String> of parameters will do.
-{% if cassandra_hosts is defined %}
-{% set seed_nodes = cassandra_hosts %}
-{% elif cassandra_hostgroup is defined and groups[cassandra_hostgroup] is defined %}
-{% set seed_nodes = groups[cassandra_hostgroup] %}
-{% endif -%}
+{% set group = cassandra_hostgroup if cassandra_hostgroup is defined else 'cassandra_hosts' %}
+{% set seed_nodes = cassandra_seed_nodes if cassandra_seed_nodes is defined else groups[group] %}
 seed_provider:
     # Addresses of hosts that are deemed contact points.
     # Cassandra nodes use this list of hosts to find each other and learn
@@ -376,7 +373,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-{% if seed_nodes is defined and seed_nodes | length > 1 -%}
+{% if seed_nodes is defined and (seed_nodes | length) > 1 -%}
 {%- set comma = joiner(",") %}
           - seeds: "
 {%- for seed_node in seed_nodes -%}

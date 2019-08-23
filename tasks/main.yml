@@ -1,5 +1,8 @@
 # roles/cassandra/tasks/main.yml
 ---
+- debug:
+    var: cassandra_hosts
+    
 - import_tasks: apply.yml
   tags:
     - apply
