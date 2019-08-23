@@ -1,8 +1,8 @@
 
 export CACHE := $(shell pwd)/.cache
 export ANSIBLE_PLAYBOOK_OPTS := \
-	--vault-password-file=.ansible-vault-password \
-	--extra-vars=cache=${CACHE}
+	--vault-password-file .ansible-vault-password \
+	--extra-vars cache=\${CACHE}
 export ANSIBLE_CONFIG := tests/ansible.cfg 
 
 ifdef DISTROS
