@@ -16,9 +16,11 @@ cassandra_jvm_heap_init: 256m
 cassandra_jvm_heap_max: 512m
 
 # Server configuration parameters - this controls the cassandra server configuraiton
+# cassandra_seed_nodes:
 cassandra_config_data_dirs:
   - "{{ base_lib_dir }}/cassandra/data"
 cassandra_config_native_transport_port: 9042
 cassandra_config_storage_port: 7000
 cassandra_config_rpc_port: 9160
 cassandra_config_endpoint_snitch: SimpleSnitch
+cassandra_seed_provider: org.apache.cassandra.locator.SimpleSeedProvider
