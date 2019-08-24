@@ -371,9 +371,6 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-{% set group =  if cassandra_hostgroup is defined else 'cassandra_hosts' %}
-{% set  =  if cassandra_seed_nodes is defined else groups[group] %}
-
 {% if cassandra_seed_nodes is defined -%}
           # Seed nodes from 'cassandra_seed_nodes'...
 {% set seed_nodes = zookeeper_hosts -%}
